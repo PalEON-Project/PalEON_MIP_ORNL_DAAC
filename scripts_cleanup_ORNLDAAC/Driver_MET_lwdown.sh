@@ -11,7 +11,7 @@ mkdir -p $outbase
 ftar=(*.tar.bz2)
 
 # Loop through each compressed file to do work -- keeps memory manageable
-for((i=1;i<${#ftar[@]};i++)); do
+for((i=0;i<${#ftar[@]};i++)); do
   ##  Step 1: Untar compressed files;
   # NOTE: currently puts it in a pain in the ass file structure, but I think
   # this actually works in our favor
@@ -32,9 +32,9 @@ for((i=1;i<${#ftar[@]};i++)); do
   fvar=(*.nc)
 
   ## Step 2: START Loop
-  for((j=1;j<${#fvar[@]};i++)); do
+  for((j=1;j<${#fvar[@]};j++)); do
     # Make some placeholder names to keep things straight
-    fnow=$fvar[j]
+    fnow=${fvar[j]}
     fmod=${fnow:0:(-3)}_modified.nc
     fnew=paleon_reg-met-dri_${fnow:0:(-3)}.nc4
 
